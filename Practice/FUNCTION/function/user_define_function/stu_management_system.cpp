@@ -44,7 +44,6 @@ int main(){
     
 
 add_stu();
-
 show_stu();
 
 
