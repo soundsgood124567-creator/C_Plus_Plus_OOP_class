@@ -5,14 +5,14 @@ string customer_name, room_type;
 int num_night, room_price,total_price, price_discount;
 
 void hotel_booking(){
-cout<<"Enter customer name :";
-cin>>customer_name;
-cout<<"Enter room tpye (standard:$40 /Deluxe:$70 /VIP$120) :";
-cin>>room_type;
-cout<<"Enter number if night :";
-cin>>num_night;
-cout<<"Price of the room :";
-cin>>room_price;
+    cout<<"Enter customer name :";
+    cin>>customer_name;
+    cout<<"Enter room tpye (standard:$40 /Deluxe:$70 /VIP$120) :";
+    cin>>room_type;
+    cout<<"Enter number if night :";
+    cin>>num_night;
+    cout<<"Price of the room :";
+    cin>>room_price;
 }
 
 
