@@ -72,6 +72,11 @@ void vip_read(){
   vip.close();
 }
 
+
+
+
+
+
 void search_use_id(){
   ifstream vip("vipfile.txt");
   cout<<"Enter VIP ID to search :";cin>>search_id;
@@ -115,17 +120,16 @@ void update_by_id(){
   fflush(stdin);cin.clear();
   while(vip>>create_id>>create_name>>create_coach>>shift>>vip_card){
     if(update_id == create_id){
-	    cout<<"Enter new id :";cin>>new_id;
-	    fflush(stdin);cin.clear();
-	    cout<<"Enter new name :";cin>>new_name;
-	    fflush(stdin);cin.clear();
-	    cout<<"Enter new coach :";cin>>new_coach;
-	    fflush(stdin);cin.clear();
-	    cout<<"Enter new shift :";cin>>new_shift;
-	  	fflush(stdin);cin.clear();
-	    cout<<"Enter new card number :";cin>>new_card_number;
-	  	fflush(stdin);cin.clear();
-
+		    cout<<"Enter new id :";cin>>new_id;
+		    fflush(stdin);cin.clear();
+		    cout<<"Enter new name :";cin>>new_name;
+		    fflush(stdin);cin.clear();
+		    cout<<"Enter new coach :";cin>>new_coach;
+		    fflush(stdin);cin.clear();
+		    cout<<"Enter new shift :";cin>>new_shift;
+		  	fflush(stdin);cin.clear();
+		    cout<<"Enter new card number :";cin>>new_card_number;
+		  	fflush(stdin);cin.clear();
 
     }else{
       cout<<"Wrong id.";
@@ -146,16 +150,16 @@ void update_by_name(){
   fflush(stdin);cin.clear();
     while(vip>>create_id>>create_name>>create_coach>>shift){
     if(update_name == create_name){
-	    cout<<"Enter new id :";cin>>new_id;
-	    fflush(stdin);cin.clear();
-	    cout<<"Enter new name :";cin>>new_name;
-	    fflush(stdin);cin.clear();
-	    cout<<"Enter new coach :";cin>>new_coach;
-	    fflush(stdin);cin.clear();
-	    cout<<"Enter new shift :";cin>>new_shift;
-	  	fflush(stdin);cin.clear();
-	    cout<<"Enter new card number :";cin>>new_card_number;
-	  	fflush(stdin);cin.clear();
+    cout<<"Enter new id :";cin>>new_id;
+    fflush(stdin);cin.clear();
+    cout<<"Enter new name :";cin>>new_name;
+    fflush(stdin);cin.clear();
+    cout<<"Enter new coach :";cin>>new_coach;
+    fflush(stdin);cin.clear();
+    cout<<"Enter new shift :";cin>>new_shift;
+  	fflush(stdin);cin.clear();
+    cout<<"Enter new card number :";cin>>new_card_number;
+  	fflush(stdin);cin.clear();
 	
 
     }
