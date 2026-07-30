@@ -4,9 +4,10 @@
 #include<conio.h>
 using namespace std;
 string user_name = "jason";
-string create_username, create_gender, create_coach, create_name,shift, search_name,update_name,new_coach,new_name,new_shift;
+string create_username, create_gender, create_coach, create_name,shift, search_name,update_name,new_coach,new_name,new_shift,delete_name;
 int password = 1234;
-int vipornormal, create_password, vip_card, create_id, search_id, id_name, update_id, new_id,new_card_number,update_id_name;
+int vipornormal, create_password, vip_card, create_id, search_id, id_name, update_id, new_id,new_card_number,update_id_name,delete_id,del_id_name;
+bool found = false;                                                                                                                                                                                                          
 
 void login (){
 
@@ -149,24 +150,24 @@ void update_by_name(){
   cout<<"Enter VIP name to update :";cin>>update_name;
   fflush(stdin);cin.clear();
     while(vip>>create_id>>create_name>>create_coach>>shift){
-    if(update_name == create_name){
-    cout<<"Enter new id :";cin>>new_id;
-    fflush(stdin);cin.clear();
-    cout<<"Enter new name :";cin>>new_name;
-    fflush(stdin);cin.clear();
-    cout<<"Enter new coach :";cin>>new_coach;
-    fflush(stdin);cin.clear();
-    cout<<"Enter new shift :";cin>>new_shift;
-  	fflush(stdin);cin.clear();
-    cout<<"Enter new card number :";cin>>new_card_number;
-  	fflush(stdin);cin.clear();
-	
+      if(update_name == create_name){
+      cout<<"Enter new id :";cin>>new_id;
+      fflush(stdin);cin.clear();
+      cout<<"Enter new name :";cin>>new_name;
+      fflush(stdin);cin.clear();
+      cout<<"Enter new coach :";cin>>new_coach;
+      fflush(stdin);cin.clear();
+      cout<<"Enter new shift :";cin>>new_shift;
+      fflush(stdin);cin.clear();
+      cout<<"Enter new card number :";cin>>new_card_number;
+      fflush(stdin);cin.clear();
+    
 
+      }
+      else{
+        cout<<"wrong name";
     }
-    else{
-    	cout<<"wrong name";
-	}
-	    temp<<new_id<<" "<<new_name<<" "<<new_coach<<" "<<new_shift<<" "<<new_card_number;
+        temp<<new_id<<" "<<new_name<<" "<<new_coach<<" "<<new_shift<<" "<<new_card_number;
 
   }
    
@@ -174,6 +175,55 @@ void update_by_name(){
   temp.close();
   remove("vipfile.txt");
    rename("temp.txt", "vipfile.txt");
+}
+
+
+
+void delete_by_id(){
+	ifstream vip("vipfile.txt");
+	ofstream del("del.txt");
+	cout<<"Enter user id to delete :";cin>>delete_id;
+	fflush(stdin);cin.clear();
+	while(vip>>create_id>>create_name>>create_coach>>shift>>vip_card){
+		if(delete_id == create_id){
+			found = true;
+			
+			del<<create_id<<" "<<create_name<<" "<<create_coach<<" "<<shift<<" "<<endl;
+		}
+		else{
+			cout<<"wrong id"<<endl;
+		}
+	}
+	vip.close();
+	del.close();
+	remove("vipfile.txt");
+	rename("del.txt","vipfile.txt");
+}
+
+
+
+
+
+
+void delete_by_name(){
+	ifstream vip("vipfile.txt");
+	ofstream del("del.txt");
+	cout<<"Enter user name to delete :";cin>>delete_name;
+	fflush(stdin);cin.clear();
+	while(vip>>create_id>>create_name>>create_coach>>shift>>vip_card){
+		if(delete_name == create_name){
+			found = true;
+			
+			del<<create_id<<" "<<create_name<<" "<<create_coach<<" "<<shift<<" "<<endl;
+		}
+		else{
+			cout<<"wrong name"<<endl;
+		}
+	}
+	vip.close();
+	del.close();
+	remove("vipfile.txt");
+	rename("del.txt","vipfile.txt");
 }
 
 
@@ -218,7 +268,19 @@ void VIP() {
                 break;
 
             case 4:
-                cout << "Delete";
+                cout << "1. Delete by id"<<endl;
+                cout << "2. Delete by name"<<endl;
+                cin>>del_id_name;
+                switch(del_id_name){
+                	case 1:{
+                		delete_by_id();
+						break;
+					}
+					case 2:{
+						delete_by_name();
+						break;
+					}
+				}
                 break;
 
             case 5:
