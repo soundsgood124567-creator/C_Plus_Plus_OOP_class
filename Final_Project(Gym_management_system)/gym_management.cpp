@@ -31,8 +31,10 @@ else {
     cout<<"Wrong username or password.";
     exit;
 }
-}
+}	
 void vip_add(){
+	getch();
+	system("cls");
   ofstream vip("vipfile.txt",ios::app);
   cout<<"Enter username :";
   cin>>create_username;
@@ -61,6 +63,8 @@ void vip_add(){
     vip.close();
 }
 void vip_read(){
+		getch();
+	system("cls");
       ifstream vip("vipfile.txt");
   while (vip>>create_id>>create_name>>create_coach>>shift){
       cout<<"VIP member list"<<endl;
@@ -79,6 +83,8 @@ void vip_read(){
 
 
 void search_use_id(){
+	getch();
+	system("cls");
   ifstream vip("vipfile.txt");
   cout<<"Enter VIP ID to search :";cin>>search_id;
   fflush(stdin);cin.clear();
@@ -98,6 +104,8 @@ void search_use_id(){
 
 
 void search_use_name(){
+	getch();
+	system("cls");
   ifstream vip("vipfile.txt");
   cout<<"Enter VIP username to search :";cin>>search_name;
   fflush(stdin);cin.clear();
@@ -115,6 +123,8 @@ void search_use_name(){
 
 
 void update_by_id(){
+	getch();
+	system("cls");
   ifstream vip("vipfile.txt");
   ofstream temp("temp.txt");
   cout<<"Enter VIP ID to update :";cin>>update_id;
@@ -145,6 +155,8 @@ void update_by_id(){
    rename("temp.txt", "vipfile.txt");
 }
 void update_by_name(){
+	getch();
+	system("cls");
   ifstream vip("vipfile.txt");
   ofstream temp("temp.txt");
   cout<<"Enter VIP name to update :";cin>>update_name;
@@ -180,6 +192,8 @@ void update_by_name(){
 
 
 void delete_by_id(){
+	getch();
+	system("cls");
 	ifstream vip("vipfile.txt");
 	ofstream del("del.txt");
 	cout<<"Enter user id to delete :";cin>>delete_id;
@@ -206,6 +220,8 @@ void delete_by_id(){
 
 
 void delete_by_name(){
+	getch();
+	system("cls");
 	ifstream vip("vipfile.txt");
 	ofstream del("del.txt");
 	cout<<"Enter user name to delete :";cin>>delete_name;
@@ -231,6 +247,8 @@ void delete_by_name(){
 void VIP() {
 
     while (true) {
+    	getch();
+		system("cls");
         cout << "\n1. Add customer" << endl;
         cout << "2. Show customer" << endl;
         cout << "3. Search customer" << endl;
@@ -241,26 +259,29 @@ void VIP() {
         cin >> vipornormal;
         switch (vipornormal) {
             case 1:
-              getch();
-              system("cls");
+             
                 vip_add();
                 break;
 
             case 2:
+            	
                 vip_read();
                 break;
 
             case 3:
+            
                 cout<<"1. Search by id"<<endl;
                 cout<<"2. Search by name"<<endl;
                 cin>>id_name;
                 fflush(stdin);cin.clear();
                 switch (id_name){
                   case 1:{
+                  	
                     search_use_id();
             break;
           }
           case 2:{
+          	
             search_use_name();
             break;
           }
@@ -268,15 +289,19 @@ void VIP() {
                 break;
 
             case 4:
+            
                 cout << "1. Delete by id"<<endl;
                 cout << "2. Delete by name"<<endl;
+                cout<<"Choose one option :";
                 cin>>del_id_name;
                 switch(del_id_name){
                 	case 1:{
+                	
                 		delete_by_id();
 						break;
 					}
 					case 2:{
+						
 						delete_by_name();
 						break;
 					}
@@ -284,15 +309,18 @@ void VIP() {
                 break;
 
             case 5:
-                cout <<"1. Update by id";
-                cout <<"2. Update by name";
+            	
+                cout <<"1. Update by id"<<endl;
+                cout <<"2. Update by name"<<endl;
                  cout << "Please choose one option: ";cin>>update_id_name;
                    switch(update_id_name){
                      case 1:{
+                     	
                        update_by_id();
               break;
              }
              case 2:{
+             
                update_by_name();
               break;
              }

@@ -7,7 +7,7 @@ using namespace std;
 class Employee{
 	public:
 		int id, age , search_id;
-		string name, gender;
+		string name, gender, search_name;
 		float hour, range, total_payment;
 		
 		void input(){
@@ -40,10 +40,19 @@ class Employee{
 		void search (){
 			cout<<"Enter employee id to search :";cin>>search_id;
 			fflush(stdin);cin.clear();
-			if(search_id == id){\
+			if(search_id == id){
 			getch();
-			system(cls);
+			system("cls");
 				show();
+			}
+		}
+		void search_by_name (){
+			cout<<"Enter employee name to search :";cin>>search_name;
+			fflush(stdin);cin.clear();
+			if(search_name == name){
+			getch();
+			system("cls");
+			show();
 			}
 		}
 };
@@ -60,6 +69,7 @@ int main (){
 	system("cls");
 	em.show();
 	em.search();
+	em.search_by_name();
 	
 	
 	
