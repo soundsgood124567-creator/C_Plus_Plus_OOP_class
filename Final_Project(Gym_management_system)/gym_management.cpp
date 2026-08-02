@@ -11,8 +11,10 @@ int vipornormal, create_password, vip_card, create_id, search_id, id_name, updat
 bool found = false;                                                                                                                                                                                               
 //normal customer
 
-string create_nor_name,create_nor_gender;
-int create_nor_age,create_nor_id,create_nor_card_id;
+string create_nor_name,create_nor_gender,nor_search_name,nor_update_name;
+int create_nor_age,create_nor_id,nor_choose,nor_search_id,nor_update_id,search_choose,update_choose;
+
+float create_nor_checkin,create_nor_checkout;
 
 void login (){
 
@@ -260,15 +262,123 @@ void delete_by_name(){
 void nor_add(){
 	getch();
 	system("cls");
-	ofstream nor("nor.txt");
-	cout<<"Enter normal customor id : ";cin>>create_nor_id;fflsuh(stdin);cin.clear();
-	cout<<"Enter normal customor id : ";cin>>create_nor_id;fflsuh(stdin);cin.clear();
-	cout<<"Enter normal customor id : ";cin>>create_nor_id;fflsuh(stdin);cin.clear();
-	cout<<"Enter normal customor id : ";cin>>create_nor_id;fflsuh(stdin);cin.clear();
-	cout<<"Enter normal customor id : ";cin>>create_nor_id;fflsuh(stdin);cin.clear();
+	ofstream normal("normal.txt");
+	cout<<"Enter customor id : ";cin>>create_nor_id;fflush(stdin);cin.clear();
+	cout<<"Enter customor name : ";cin>>create_nor_name;fflush(stdin);cin.clear();
+	cout<<"Enter customor age : ";cin>>create_nor_age;fflush(stdin);cin.clear();
+	cout<<"Enter customor gender : ";cin>>create_nor_gender;fflush(stdin);cin.clear();
+	cout<<"Enter customor time for check in : ";cin>>create_nor_checkin;fflush(stdin);cin.clear();
+	cout<<"Enter customor time for check out : ";cin>>create_nor_checkout;fflush(stdin);cin.clear();
 	
+	normal <<create_nor_id<<" "<<create_nor_name<<" "<<create_nor_age<<" "<<create_nor_gender<<" "<<create_nor_checkin<<" "<<create_nor_checkout<<" \n";
+	cout<<"create successfully "<<endl;
+	normal.close();
+	}
+	void nor_show(){
+		cout<<"normal customor list"<<endl;
+		ifstream normal("normal.txt");
+		while(normal>>create_nor_id>>create_nor_name>>create_nor_age >>create_nor_gender>>create_nor_checkin>>create_nor_checkout){
+			cout<<left<<setw(20)<<"customor id"<<setw(20)<<"Customor name "<<setw(20)<<"Customor gender"<<setw(20)<<" Customor check in time"<<setw(20)<<"Customor check out time "<<endl;
+			cout<<left<<setw(20)<<create_nor_id<<setw(20)<<create_nor_name<<setw(20)<<create_nor_gender<<setw(20)<<create_nor_checkin<<setw(20)<<create_nor_checkout<<endl;
+		}
+	normal.close();
+	}
+	
+
+void nor_search_use_id(){
+	ifstream normal("normal.txt");
+	cout<<"enter customor id to search : ";cin>>nor_search_id;fflush(stdin);cin.clear();
+	if(nor_search_id == create_nor_id){
+		nor_show();
+	}
+	else{
+		cout<<"Invild id"<<endl;
+	}
+}
+
+
+void nor_search_use_name(){
+	ifstream normal("normal.txt");
+	cout<<"enter customor id to search : ";cin>>nor_search_id;fflush(stdin);cin.clear();
+	if(nor_search_name == create_nor_name){
+		nor_show();
+	}
+	else{
+		cout<<"Invild id"<<endl;
+	}
+}
+
+
+
+
+void nor_update_by_id(){
+	ifstream normal("normal.txt");
+	ofstream nortemp("nor_temp.txt");
+	cout<<"Enter Customor id to up date : ";cin>>nor_update_id;fflush(stdin);cin.clear();
+	if(nor_update_id == create_nor_id){
+		nor_add();
+		nortemp <<create_nor_id<<" "<<create_nor_name<<" "<<create_nor_age<<" "<<create_nor_gender<<" "<<create_nor_checkin<<" "<<create_nor_checkout<<" \n";
+	}
+	
+	normal.close();
+	nortemp.close();
+	remove("normal.txt");
+	rename("nor_temp.txt","normal.txt");
+	}
+	
+	void nor_update_by_name(){
+	ifstream normal("normal.txt");
+	ofstream nortemp("nor_temp.txt");
+	cout<<"Enter Customor name to up date : ";cin>>nor_update_name;fflush(stdin);cin.clear();
+	if(nor_update_name == create_nor_name){
+		nor_add();
+		nortemp <<create_nor_id<<" "<<create_nor_name<<" "<<create_nor_age<<" "<<create_nor_gender<<" "<<create_nor_checkin<<" "<<create_nor_checkout<<" \n";
+	}
+	
+	normal.close();
+	nortemp.close();
+	remove("normal.txt");
+	rename("nor_temp.txt","normal.txt");
 	}
 
+void normal(){
+	while(true){
+		cout<<"1. Add customer "<<endl;
+		cout<<"2. Show customer "<<endl;
+		cout<<"3. Search customer "<<endl;
+		cout<<"4. Update customer "<<endl;
+		cout<<"5. Delete customer "<<endl;
+		cout<<"Please enter one choose :";cin>>nor_choose;fflush(stdin);cin.clear();
+		switch(nor_choose){
+			case 1:{
+				nor_add();
+				break;
+			}
+			case 2:{
+				nor_show();
+				break;
+			}
+			case 3:{
+			cout<<"1. Search by id";
+			cout<<"2. search by name";
+			cout<<"please enter your choose : ";cin>>search_choose;fflush(stdin);cin.clear();
+			switch(search_choose){}
+				case 1:{ 
+				cout<<"please enter "
+					nor_search_use_id();
+					break;
+				}
+			}
+				break;
+			}
+			case 4:{
+				nor_update_by_id();
+				break;
+			}
+		}
+	}
+
+}
 
 
 void VIP() {
@@ -370,12 +480,15 @@ int main (){
   cout<<"Please choose one option :";
   cin>>vipornormal;
   switch (vipornormal){
-    case 1:
-    VIP(); 
-    break ;
-      
+    case 1:{
+    	 VIP(); 
+		break;
   }
-
+  case 2:{
+  	normal();
+	break;
+}
+}
 
   return 0;
 }
