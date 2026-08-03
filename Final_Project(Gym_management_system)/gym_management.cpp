@@ -17,6 +17,8 @@ int create_nor_age,create_nor_id,nor_choose,nor_search_id,nor_update_id,search_c
 float create_nor_checkin,create_nor_checkout;
 
 void login (){
+	
+
 
 cout<<"Enter username :";
 cin>>user_name;
@@ -76,7 +78,8 @@ void vip_read(){
   	while (vip>>create_id>>create_name>>create_coach>>shift){
 		cout<<"VIP member list"<<endl;
 		cout<<left<<setw(20)<<"VIP ID "<<setw(20)<<" VIP Name "<<
-		setw(20)<<"VIP coach"<<setw(20)<<"VIP shift "<<setw<<"Card number "<<endl;
+		setw(20)<<"VIP coach"<<setw(20)<<"VIP shift "<<setw(20)<<"Card number "<<endl;
+		
 		cout<<left<<setw(20)<<create_id<<setw(20)<<create_name<<
 		setw(20)<<create_coach<<setw(20)<<shift<<setw(20)<<vip_card<<endl;
 		vip.close();
@@ -278,8 +281,8 @@ void nor_add(){
 		cout<<"normal customor list"<<endl;
 		ifstream normal("normal.txt");
 		while(normal>>create_nor_id>>create_nor_name>>create_nor_age >>create_nor_gender>>create_nor_checkin>>create_nor_checkout){
-			cout<<left<<setw(20)<<"customor id"<<setw(20)<<"Customor name "<<setw(20)<<"Customor gender"<<setw(20)<<" Customor check in time"<<setw(20)<<"Customor check out time "<<endl;
-			cout<<left<<setw(20)<<create_nor_id<<setw(20)<<create_nor_name<<setw(20)<<create_nor_gender<<setw(20)<<create_nor_checkin<<setw(20)<<create_nor_checkout<<endl;
+			cout<<left<<setw(20)<<"customor id"<<setw(20)<<"Customor name "<<setw(19)<<"Customor gender"<<setw(30)<<" Customor check in time"<<setw(30)<<"Customor check out time "<<setw(20)<<endl;
+			cout<<left<<setw(20)<<create_nor_id<<setw(20)<<create_nor_name<<setw(20)<<create_nor_gender<<setw(30)<<create_nor_checkin<<setw(20)<<create_nor_checkout<<endl;
 		}
 	normal.close();
 	}
@@ -362,23 +365,29 @@ void normal(){
 			cout<<"1. Search by id";
 			cout<<"2. search by name";
 			cout<<"please enter your choose : ";cin>>search_choose;fflush(stdin);cin.clear();
-			switch(search_choose){}
-				case 1:{ 
-				cout<<"please enter "
+			switch(search_choose){
+				case 1:{
 					nor_search_use_id();
 					break;
 				}
+				case 2:{
+					nor_search_use_name();
+					break;
+				}
+	}
+			
 			}
-				break;
-			}
-			case 4:{
+				
+					case 4:{
 				nor_update_by_id();
 				break;
 			}
+			}
+		
 		}
 	}
 
-}
+
 
 
 void VIP() {
