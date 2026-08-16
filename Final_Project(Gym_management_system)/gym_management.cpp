@@ -11,8 +11,8 @@ int vipornormal, create_password, vip_card, create_id, search_id, id_name, updat
 bool found = false;                                                                                                                                                                                               
 //normal customer
 
-string create_nor_name,create_nor_gender,nor_search_name,nor_update_name;
-int create_nor_age,create_nor_id,nor_choose,nor_search_id,nor_update_id,search_choose,update_choose;
+string create_nor_name,create_nor_gender,nor_search_name,nor_update_name,nor_delete_name;
+int create_nor_age,create_nor_id,nor_choose,nor_search_id,nor_update_id,search_choose,update_choose,nor_delete_id;
 
 float create_nor_checkin,create_nor_checkout;
 
@@ -311,6 +311,52 @@ void nor_search_use_name(){
 	}
 }
 
+void nor_delete_by_name(){
+	getch();
+	system("cls");
+	ifstream normal("normal.txt");
+	ofstream delnor("nor_del.txt");
+	cout<<"Enter user name to delete :";cin>>nor_delete_name;
+	fflush(stdin);cin.clear();
+	while(normal>>create_nor_id>>create_nor_name>>create_nor_checkin>>create_nor_checkout){
+		if(nor_delete_name == create_nor_name){
+			found = true;
+			
+			delnor<<create_nor_id<<" "<<create_nor_name<<" "<<create_nor_checkin<<" "<<create_nor_checkout<<" "<<endl;
+		}
+		else{
+			cout<<"wrong name"<<endl;
+		}
+	}
+	normal.close();
+	delnor.close();
+	remove("normal.txt");
+	rename("nor_del.txt","normal.txt");
+}
+
+void nor_delete_by_id(){
+	getch();
+	system("cls");
+	ifstream normal("normal.txt");
+	ofstream delnor("nor_del.txt");
+	cout<<"Enter user id to delete :";cin>>nor_delete_id;
+	fflush(stdin);cin.clear();
+	while(normal>>create_nor_id>>create_nor_name>>create_nor_checkin>>create_nor_checkout){
+		if(nor_delete_id == create_nor_id){
+			found = true;
+			
+			delnor<<create_nor_id<<" "<<create_nor_name<<" "<<create_nor_checkin<<" "<<create_nor_checkout<<" "<<endl;
+		}
+		else{
+			cout<<"wrong id"<<endl;
+		}
+	}
+	normal.close();
+	delnor.close();
+	remove("normal.txt");
+	rename("nor_del.txt","normal.txt");
+}
+
 
 
 
@@ -343,6 +389,7 @@ void nor_update_by_id(){
 	remove("normal.txt");
 	rename("nor_temp.txt","normal.txt");
 	}
+	
 
 void normal(){
 	while(true){
@@ -369,17 +416,21 @@ void normal(){
 				case 1:{
 					nor_search_use_id();
 					break;
+					}
+					case 2:{
+						nor_search_use_name();
+						break;
+					}
 				}
-				case 2:{
-					nor_search_use_name();
-					break;
-				}
-	}
 			
 			}
 				
 					case 4:{
 				nor_update_by_id();
+				break;
+			}
+			case 5:{
+				nor_delete_by_name();
 				break;
 			}
 			}
