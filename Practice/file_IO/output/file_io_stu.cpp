@@ -179,7 +179,7 @@ void delete_stu(){
 
 
 
-void delete_stu_name(){
+void delete_stu_name(){	
     ifstream file ("student.txt");
     ofstream tempp ("tempp.txt");
     cout<<"enter student name to delete :";
