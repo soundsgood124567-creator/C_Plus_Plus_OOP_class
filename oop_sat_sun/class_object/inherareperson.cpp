@@ -63,7 +63,7 @@ class Teacher{
 	}
 	void outputteacher(){
 		outputperson();
-		cout<<"teacher_id : "<<teacher_id<<endl;
+		cout<<"teacher_id : "<<teacher_id<<endl;ssaw
 		cout<<"subject : "<<subject<<endl;
 		cout<<"exprenece : "<<exp<<endl;
 	}
