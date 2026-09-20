@@ -25,8 +25,6 @@ class Person{
 		}
 };
 
-
-
 class Employee :virtual public Person{
 	protected :
 		int salary,xp;
@@ -75,12 +73,6 @@ class Student :virtual public Person{
 };
 
 
-
-
-
-
-
-
 class Manger : public Employee , Student{
 	public:
 	string deparment;
@@ -108,9 +100,7 @@ int main (){
 	Manger s;
 	s.in_man();
 	s.show_man();
-	
-	
-	
+
 	
 	return 0;
 }
